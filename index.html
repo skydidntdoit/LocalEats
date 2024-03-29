@@ -31,7 +31,7 @@
       "esri/views/MapView",
       "esri/geometry/Point",
 
-    ], function (esriConfig, Map, MapView, Point) {
+    ], function (esriConfig, Map, MapView, Point,) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
 
@@ -41,15 +41,15 @@
       
       // Specify the coordinates for Gainesville, Florida
       const centerPoint = new Point({
-        longitude: -82.3248,
-        latitude: 29.6516
+        longitude: -82.3533,
+        latitude: 29.6465
       });
 
       const view = new MapView({
         container: "viewDiv", // Reference to the DOM node that will contain the view
         map: map, // References the map object
         center: centerPoint, // Set the center of the map
-        zoom: 12 // Set an appropriate zoom level
+        zoom: 15 // Set an appropriate zoom level
       });
 
     });
