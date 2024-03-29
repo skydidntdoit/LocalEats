@@ -27,10 +27,10 @@
       cursor: pointer;
       text-decoration: none;
     }
-
-.addRecordBtn:hover {
-  background-color: #005a87;
-}
+    
+    .addRecordBtn:hover {
+      background-color: #005a87;
+    }
 
   </style>
 
@@ -52,9 +52,11 @@
       "esri/geometry/Point",
       "esri/widgets/Locate",
       "esri/widgets/Search",
-      "esri/layers/FeatureLayer"
+      "esri/layers/FeatureLayer",
+      "esri/tasks/support/Query",
+      "esri/PopupTemplate"
 
-    ], function (esriConfig, Map, MapView, Point, Locate, Search, FeatureLayer) {
+    ], function (esriConfig, Map, MapView, Point, Locate, Search, FeatureLayer, Query, PopupTemplate) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
 
@@ -82,7 +84,38 @@
         // Create featurelayer from feature service 
         const layer = new FeatureLayer({ 
           // URL to the service 
-          url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_e97907c1d5334bccbe9bc21ab1556522_results/FeatureServer"
+          url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_e97907c1d5334bccbe9bc21ab1556522_results/FeatureServer",
+          outFields: ["what_is_the_name_of_this_restau", "field_4", "what_type_of_food_is_served_her", "what_dish_would_you_recommend_h", "what_is_the_price_range_of_a_di", "is_there_parking_available_near"], // Include all fields
+          popupTemplate: new PopupTemplate({
+            title: "{what_is_the_name_of_this_restau}",
+            content: [
+              {
+                type: "fields",
+                fieldInfos: [
+                  {
+                    fieldName: "field_4",
+                    label: "Rating"
+                  },
+                  {
+                    fieldName: "what_type_of_food_is_served_her",
+                    label: "Type of Food"
+                  },
+                  {
+                    fieldName: "what_dish_would_you_recommend_h",
+                    label: "Recommended Dish"
+                  },
+                  {
+                    fieldName: "what_is_the_price_range_of_a_di",
+                    label: "Price Range"
+                  },
+                  {
+                    fieldName: "is_there_parking_available_near",
+                    label: "Parking Availability"
+                  }
+                ]
+              }
+            ]
+          })
         });
 
         map.add(layer);
