@@ -1,2 +1,3 @@
 # esrijs
-My Esri JS Map accessing AGOL
+
+Creating a web application for my GIS programming class Midterm
