@@ -30,8 +30,10 @@
       "esri/Map",
       "esri/views/MapView",
       "esri/geometry/Point",
+      "esri/widgets/Locate",
+      "esri/widgets/Search"
 
-    ], function (esriConfig, Map, MapView, Point,) {
+    ], function (esriConfig, Map, MapView, Point, Locate, Search) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
 
@@ -51,6 +53,26 @@
         center: centerPoint, // Set the center of the map
         zoom: 15 // Set an appropriate zoom level
       });
+
+      const locateBtn = new Locate({
+          view: view
+        });
+
+        // Add the locate widget to the top left corner of the view
+        view.ui.add(locateBtn, {
+          position: "top-left"
+        });
+
+        const searchWidget = new Search({
+          view: view
+        });
+        
+        // Adds the search widget below other elements in
+        // the top left corner of the view
+        view.ui.add(searchWidget, {
+          position: "top-left",
+          index: 2
+        });
 
     });
 
