@@ -37,6 +37,19 @@
       const map = new Map({ 
         basemap: "satellite"
       });
+      
+      // Specify the coordinates for Gainesville, Florida
+      const centerPoint = new Point({
+        longitude: -82.3248,
+        latitude: 29.6516
+      });
+
+      const view = new MapView({
+        container: "viewDiv", // Reference to the DOM node that will contain the view
+        map: map, // References the map object
+        center: centerPoint, // Set the center of the map
+        zoom: 12 // Set an appropriate zoom level
+      });
 
       const view = new MapView({
         container: "viewDiv", // Reference to the DOM node that will contain the view
