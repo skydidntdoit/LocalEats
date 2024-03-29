@@ -12,6 +12,26 @@
       height: 100%; 
       width: 100%;
     }
+
+    .addRecordBtn {
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 10px;
+      background-color: #0079c1;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+.addRecordBtn:hover {
+  background-color: #005a87;
+}
+
   </style>
 
   <meta charset="UTF-8" />
@@ -79,7 +99,7 @@
         // Adds the search widget below other elements in
         // the top left corner of the view
         view.ui.add(searchWidget, {
-          position: "top-right",
+          position: "bottom-left",
           index: 1
         });
 
@@ -90,6 +110,7 @@
 </head>
 <body>
 
+  <a href="https://arcg.is/jbO9G"target="_blank" class="addRecordBtn">Add Record</a>
   <!-- the div to displays the map  -->
 <div id= "viewDiv" ></div>
 
