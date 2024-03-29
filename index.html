@@ -31,9 +31,10 @@
       "esri/views/MapView",
       "esri/geometry/Point",
       "esri/widgets/Locate",
-      "esri/widgets/Search"
+      "esri/widgets/Search",
+      "esri/layers/FeatureLayer"
 
-    ], function (esriConfig, Map, MapView, Point, Locate, Search) {
+    ], function (esriConfig, Map, MapView, Point, Locate, Search, FeatureLayer) {
 
       esriConfig.apiKey = "AAPK7170024e9f4040658710d2304ab3b64dt12endQyEuwFKQk4gPITlD8vghyLWZCglohdvpLP5McC-0Hi79UOMg4MzAczwBTK";
 
@@ -58,6 +59,14 @@
           view: view
         });
 
+        // Create featurelayer from feature service 
+        const layer = new FeatureLayer({ 
+          // URL to the service 
+          url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/survey123_e97907c1d5334bccbe9bc21ab1556522_results/FeatureServer"
+        });
+
+        map.add(layer);
+
         // Add the locate widget to the top left corner of the view
         view.ui.add(locateBtn, {
           position: "top-left"
@@ -70,8 +79,8 @@
         // Adds the search widget below other elements in
         // the top left corner of the view
         view.ui.add(searchWidget, {
-          position: "top-left",
-          index: 2
+          position: "top-right",
+          index: 1
         });
 
     });
