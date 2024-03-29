@@ -29,6 +29,7 @@
      "esri/config",
       "esri/Map",
       "esri/views/MapView",
+      "esri/geometry/Point",
 
     ], function (esriConfig, Map, MapView) {
 
@@ -51,17 +52,9 @@
         zoom: 12 // Set an appropriate zoom level
       });
 
-      const view = new MapView({
-        container: "viewDiv", // Reference to the DOM node that will contain the view
-        map: map // References the map object
-      });
-
     });
 
   </script>
-
-  <!-- css to make a full screen map -->
-
 
 </head>
 <body>
